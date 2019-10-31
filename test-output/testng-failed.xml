@@ -3,11 +3,11 @@
 <suite guice-stage="DEVELOPMENT" name="Failed suite [Default suite]">
   <test thread-count="5" name="Default test(failed)">
     <classes>
-      <class name="splunk.splunk_automation.testbase">
+      <class name="splunk.splunk_automation.DriverTest">
         <methods>
           <include name="Code"/>
         </methods>
-      </class> <!-- splunk.splunk_automation.testbase -->
+      </class> <!-- splunk.splunk_automation.DriverTest -->
     </classes>
   </test> <!-- Default test(failed) -->
 </suite> <!-- Failed suite [Default suite] -->

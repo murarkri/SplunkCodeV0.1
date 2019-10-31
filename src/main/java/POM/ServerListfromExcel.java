@@ -11,7 +11,7 @@ public class ServerListfromExcel  {
 
 	
 	public static void ExcelConnection() throws IOException {
-		File src= new File("C:\\Users\\mukri2\\Downloads\\Selenium\\Splunk Integ Server.xlsx");
+		File src= new File("C:\\Users\\mukri2\\eclipse-workspace\\splunk_automation\\ServerExcel\\Splunk Integ Server.xlsx");
 		 FileInputStream fis=new FileInputStream(src);
 		 XSSFWorkbook wb=new XSSFWorkbook(fis);
 		 XSSFSheet sheet=wb.getSheetAt(0);
