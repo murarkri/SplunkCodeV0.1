@@ -1,6 +1,5 @@
 POM\ExtentReportClass.class
 POM\SplunkLoginPage.class
-splunk\splunk_automation\testbase.class
 POM\ServerListfromExcel.class
 POM\CommonFunctions.class
 POM\sendMail.class

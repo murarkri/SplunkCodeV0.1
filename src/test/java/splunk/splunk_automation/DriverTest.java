@@ -21,7 +21,7 @@ import POM.SplunkLoginPage;
 import POM.StatusCheck;
 import POM.sendMail;
 
-public class testbase extends BrowserConfig {
+public class DriverTest extends BrowserConfig {
 @Test
 	public  void Code() throws InterruptedException, IOException, MessagingException {
 		// TODO Auto-generated method stub
