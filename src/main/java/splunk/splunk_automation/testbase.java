@@ -5,7 +5,8 @@ import java.io.FileInputStream;
 import java.io.IOException;
 import java.sql.Timestamp;
 
-import org.apache.commons.mail.EmailException;
+import javax.mail.MessagingException;
+
 import org.apache.poi.xssf.usermodel.XSSFSheet;
 import org.apache.poi.xssf.usermodel.XSSFWorkbook;
 import org.openqa.selenium.Keys;
@@ -18,10 +19,11 @@ import POM.ExtentReportClass;
 import POM.SplunkHomePage;
 import POM.SplunkLoginPage;
 import POM.StatusCheck;
+import POM.sendMail;
 
 public class testbase extends BrowserConfig {
 @Test
-	public  void Code() throws InterruptedException, IOException, EmailException {
+	public  void Code() throws InterruptedException, IOException, MessagingException {
 		// TODO Auto-generated method stub
 	     driver=initializeDriver();
 		 driver.get("https://splunk.ikea.com/en-US/app/ikea/somchecksterlingserverstatus?form.field1=");
@@ -64,10 +66,11 @@ public class testbase extends BrowserConfig {
 			      System.out.println(new Timestamp(date.getTime()) + " Before");
 			      Thread.sleep(5000);
 			      CommonFunctions scrShot = new CommonFunctions();
-					scrShot.ScreenShot(driver, i);
+					
 			      
 				scrShot.expWait(driver, new StatusCheck().Status(driver));
 				
+				scrShot.ScreenShot(driver, i);
 				System.out.println(new Timestamp(date.getTime()) + " After");
 			 
 				 String result1=Sc.FirstRow(driver).getText();
@@ -127,6 +130,7 @@ public class testbase extends BrowserConfig {
 		 ExtentReportClass showTime = new ExtentReportClass();
 		 showTime.report();
 		 
+		 new sendMail().mailTrigger("murari.krishna1@ikea.com");
 		 
 		 driver.quit();
 		 

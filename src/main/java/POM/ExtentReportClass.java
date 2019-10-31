@@ -14,9 +14,17 @@ public class ExtentReportClass {
 		ExtentReports testReport = new ExtentReports();
 		testReport.attachReporter(reporter);
 		
-		ExtentTest logger = testReport.createTest("SplunkIntegServerHealthCheck");
-		logger.log(Status.INFO, "Server Health Check Description");
-		logger.log(Status.PASS,"All servers are in running status");
+		
+		ExtentTest logger1 = testReport.createTest("IkeaOrderCreationIntegServer");
+		logger1.log(Status.INFO, "Server Health Check Description");
+		logger1.log(Status.PASS,"All four components are in running status");
+		
+		
+		ExtentTest logger2 = testReport.createTest("IkeaCreateWorkOrderIntegServer");
+		logger2.log(Status.INFO, "Server Health Check Description");
+		logger2.log(Status.PASS,"All four components are in running status");
+		
+		
 		
 		
 		
