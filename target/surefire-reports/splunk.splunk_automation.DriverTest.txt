@@ -1,15 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: splunk.splunk_automation.DriverTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 1, Errors: 0, Skipped: 0, Time elapsed: 21.16 s <<< FAILURE! - in splunk.splunk_automation.DriverTest
-Code(splunk.splunk_automation.DriverTest)  Time elapsed: 20.159 s  <<< FAILURE!
-org.openqa.selenium.WebDriverException: 
-Failed to decode response from marionette
-Build info: version: '3.141.59', revision: 'e82be7d358', time: '2018-11-14T08:17:03'
-System info: host: 'ITINBAI-DW0248', ip: '10.62.7.136', os.name: 'Windows 10', os.arch: 'amd64', os.version: '10.0', java.version: '1.8.0_231'
-Driver info: org.openqa.selenium.firefox.FirefoxDriver
-Capabilities {acceptInsecureCerts: true, browserName: firefox, browserVersion: 70.0, javascriptEnabled: true, moz:accessibilityChecks: false, moz:buildID: 20191016161957, moz:geckodriverVersion: 0.26.0, moz:headless: false, moz:processID: 4536, moz:profile: C:\Users\mukri2\AppData\Loc..., moz:shutdownTimeout: 60000, moz:useNonSpecCompliantPointerOrigin: false, moz:webdriverClick: true, pageLoadStrategy: normal, platform: WINDOWS, platformName: WINDOWS, platformVersion: 10.0, rotatable: false, setWindowRect: true, strictFileInteractability: false, timeouts: {implicit: 0, pageLoad: 300000, script: 30000}, unhandledPromptBehavior: dismiss and notify}
-Session ID: 55b3457a-d17b-4ef7-a197-fe864b295cb6
-*** Element info: {Using=xpath, value=//button[contains(@data-test,'toggle')]}
-	at splunk.splunk_automation.DriverTest.Code(DriverTest.java:38)
-
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 310.487 s - in splunk.splunk_automation.DriverTest

@@ -15,7 +15,7 @@ import org.openqa.selenium.support.ui.WebDriverWait;
 public class CommonFunctions {
 
 
-	public void ScreenShot(WebDriver driver, int i) throws IOException 
+	public  void ScreenShot(WebDriver driver, int i) throws IOException 
 	{
 		File source1= ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
 		FileUtils.copyFile(source1, new File("C:\\Users\\mukri2\\eclipse-workspace\\splunk_automation\\Screenshots\\Check"+ i +".png"));
