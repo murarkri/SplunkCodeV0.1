@@ -30,8 +30,8 @@ public class DriverTest extends BrowserConfig {
 		 driver.manage().window().maximize();
 		
 		 SplunkLoginPage Slp=new SplunkLoginPage(driver);
-		 Slp.UN().sendKeys("manib2");
-		 Slp.Password().sendKeys("Welcome21");
+		 Slp.UN().sendKeys("mukri2");
+		 Slp.Password().sendKeys("india12c");
 		 Slp.Login().click();
 		 Thread.sleep(7000);
 		 SplunkHomePage Shp=new SplunkHomePage(driver);

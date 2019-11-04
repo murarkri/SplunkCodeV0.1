@@ -1,5 +1,6 @@
 package POM;
 
+import java.sql.Timestamp;
 import java.util.Properties;
 
 import javax.activation.DataHandler;
@@ -74,7 +75,171 @@ public class sendMail {
 			message.setFrom(new InternetAddress(myAccount));
 			message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
 			message.setSubject("Splunk integration server health check_iPPE1-EU");
-			messageBodyPart.setText("Hi Team,"+"\n"+"\n"+"Please find the attached htlm report of health status for Splunk integration servers. "+"\n"+"\n"+"\n"+"Best Regards,"+"\n"+"Murari Krishna");
+			java.util.Date date= new java.util.Date();
+		    
+			String htmlMsg="<head>\r\n" + 
+					"<style>\r\n" + 
+					"table {\r\n" + 
+					"  width:100%;\r\n" + 
+					"}\r\n" + 
+					"table, th, td {\r\n" + 
+					"  border: 1px solid black;\r\n" + 
+					"  border-collapse: collapse;\r\n" + 
+					"}\r\n" + 
+					"th, td {\r\n" + 
+					"  padding: 15px;\r\n" + 
+					"  text-align: left;\r\n" + 
+					"}\r\n" + 
+					"table#t01 tr:nth-child(even) {\r\n" + 
+					"  background-color: #eee;\r\n" + 
+					"}\r\n" + 
+					"table#t01 tr:nth-child(odd) {\r\n" + 
+					" background-color: #fff;\r\n" + 
+					"}\r\n" + 
+					"table#t01 th {\r\n" + 
+					"  background-color: black;\r\n" + 
+					"  color: white;\r\n" + 
+					"}\r\n" + 
+					"</style>\r\n" + 
+					"</head>\r\n" + 
+					"<body>\r\n" + 
+					"\r\n" + 
+					"<h2>Splunk Integration Servers Health Status</h2>\r\n" +
+					"<h2>"+new Timestamp(date.getTime())+"</h2>\r\n" +
+					"\r\n" + 
+					"\r\n" + 
+					"<br>\r\n" + 
+					"\r\n" + 
+					"<table id=\"t01\">\r\n" + 
+					"  <tr>\r\n" + 
+					"    <th>Server Name</th>\r\n" + 
+					"    <th>Status</th> \r\n" + 
+					"    \r\n" + 
+					"  </tr>\r\n" + 
+					"  <tr>\r\n" + 
+					"    <td>IkeaOrderCreationIntegServer</td>\r\n" + 
+					"    <td>Running</td>\r\n" + 
+					" \r\n" + 
+					"  </tr>\r\n" + 
+					"  <tr>\r\n" + 
+					"    <td>IkeaCreateWorkOrderIntegServer</td>\r\n" + 
+					"    <td>Running</td>\r\n" + 
+					"    \r\n" + 
+					"  </tr>\r\n" + 
+					"  <tr>\r\n" + 
+					"    <td>IKEAWorkOrderAckIntegServer</td>\r\n" + 
+					"    <td>Running</td>\r\n" + 
+					"    \r\n" + 
+					"  </tr>\r\n" + 
+					"<tr>\r\n" + 
+					"    <td>IKEAWorkOrderAckIntegServer</td>\r\n" + 
+					"    <td>Running</td>\r\n" + 
+					"   \r\n" + 
+					"  </tr>\r\n" + 
+					"<tr>\r\n" + 
+					"    <td>IkeaScheduleOrderAgent</td>\r\n" + 
+					"    <td>Running</td>\r\n" + 
+					"  \r\n" + 
+					"  </tr>\r\n" + 
+					"<tr>\r\n" + 
+					"    <td>IkeaReleaseOrderAgent</td>\r\n" + 
+					"    <td>Running</td>\r\n" + 
+					"   \r\n" + 
+					"  </tr>\r\n" + 
+					"<tr>\r\n" + 
+					"    <td>IkeaDeliveryReleasedUpdateIntegServer</td>\r\n" + 
+					"    <td>Running</td>\r\n" + 
+					"    \r\n" + 
+					"  </tr>\r\n" + 
+					"<tr>\r\n" + 
+					"    <td>IkeaReceivePickingUpdatesIntegServer</td>\r\n" + 
+					"    <td>Running</td>\r\n" + 
+					"   \r\n" + 
+					"  </tr>\r\n" + 
+					"<tr>\r\n" + 
+					"    <td>IkeaReadyForLoadUpdateIntegServer</td>\r\n" + 
+					"    <td>Running</td>\r\n" + 
+					" \r\n" + 
+					"  </tr>\r\n" + 
+					"<tr>\r\n" + 
+					"    <td>IkeaCDULoadConfirmationIntegServer</td>\r\n" + 
+					"    <td>Running</td>\r\n" + 
+					"   \r\n" + 
+					"  </tr>\r\n" + 
+					"<tr>\r\n" + 
+					"    <td>IkeaCSMDsptchdConfrmtnIntegServer</td>\r\n" + 
+					"    <td>Running</td>\r\n" + 
+					"   \r\n" + 
+					"  </tr>\r\n" + 
+					"<tr>\r\n" + 
+					"    <td>IkeaReceivedAtHubIntegServer</td>\r\n" + 
+					"    <td>Running</td>\r\n" + 
+					"    \r\n" + 
+					"  </tr>\r\n" + 
+					"<tr>\r\n" + 
+					"    <td>IkeaLoadedOnDeliveryTruckIntegServer</td>\r\n" + 
+					"    <td>Running</td>\r\n" + 
+					"  \r\n" + 
+					"  </tr>\r\n" + 
+					"<tr>\r\n" + 
+					"    <td>IkeaDeliveredToCustomerIntegServer</td>\r\n" + 
+					"    <td>Running</td>\r\n" + 
+					"   \r\n" + 
+					"  </tr>\r\n" + 
+					"<tr>\r\n" + 
+					"    <td>IKEAPublishMsgForIBISAndOCServer</td>\r\n" + 
+					"    <td>Running</td>\r\n" + 
+					"   \r\n" + 
+					"  </tr>\r\n" + 
+					"<tr>\r\n" + 
+					"    <td>IKEAProcessConfirmShipmentIntegServer</td>\r\n" + 
+					"    <td>Doe</td>\r\n" + 
+					"    \r\n" + 
+					"  </tr>\r\n" + 
+					"<tr>\r\n" + 
+					"    <td>IKEAILTCreateInventoryActyIntegServer</td>\r\n" + 
+					"    <td>Running</td>\r\n" + 
+					" \r\n" + 
+					"  </tr>\r\n" + 
+					"<tr>\r\n" + 
+					"    <td>IKEAConsolidateInventoryAgentServer</td>\r\n" + 
+					"    <td>Running</td>\r\n" + 
+					"    \r\n" + 
+					"  </tr>\r\n" + 
+					"<tr>\r\n" + 
+					"    <td>IkeaConsgmntRcptForROAgent</td>\r\n" + 
+					"    <td>Running</td>\r\n" + 
+					"    \r\n" + 
+					"  </tr>\r\n" + 
+					"<tr>\r\n" + 
+					"    <td>IKEAReceiveROIntegServer</td>\r\n" + 
+					"    <td>Running</td>\r\n" + 
+					"  \r\n" + 
+					"  </tr>\r\n" + 
+					"<tr>\r\n" + 
+					"    <td>IkeaProcessRepOrderIntegServer</td>\r\n" + 
+					"    <td>Running</td>\r\n" + 
+					"   \r\n" + 
+					"  </tr>\r\n" + 
+					"<tr>\r\n" + 
+					"    <td>IkeaInventoryAdjustIntegServer</td>\r\n" + 
+					"    <td>Running</td>\r\n" + 
+					"  \r\n" + 
+					"  </tr>\r\n" + 
+					"<tr>\r\n" + 
+					"    <td>IkeaRTAMActivityBroadcast</td>\r\n" + 
+					"    <td>Running</td>\r\n" + 
+					"\r\n" + 
+					"  </tr>\r\n" + 
+					"<tr>\r\n" + 
+					"    <td>IkeaRTAMActivityPrimary</td>\r\n" + 
+					"    <td>Running</td>\r\n" + 
+					"  </tr>\r\n" + 
+					"\r\n" + 
+					"</table>\r\n" + 
+					"\r\n" + 
+					"</body>";
+			messageBodyPart.setContent(htmlMsg, "text/html");
 			
 			Multipart multipart = new MimeMultipart();
 			

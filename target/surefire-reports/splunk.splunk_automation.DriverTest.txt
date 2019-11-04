@@ -1,4 +1,4 @@
 -------------------------------------------------------------------------------
 Test set: splunk.splunk_automation.DriverTest
 -------------------------------------------------------------------------------
-Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 310.487 s - in splunk.splunk_automation.DriverTest
+Tests run: 1, Failures: 0, Errors: 0, Skipped: 0, Time elapsed: 273.444 s - in splunk.splunk_automation.DriverTest
