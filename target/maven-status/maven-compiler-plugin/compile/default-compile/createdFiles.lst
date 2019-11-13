@@ -2,6 +2,7 @@ POM\ExtentReportClass.class
 POM\SplunkLoginPage.class
 POM\ServerListfromExcel.class
 POM\CommonFunctions.class
+POM\ExcelWrite.class
 POM\sendMail.class
 POM\BrowserConfig.class
 POM\SplunkHomePage.class

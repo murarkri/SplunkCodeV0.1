@@ -40,16 +40,19 @@ public class DriverTest extends BrowserConfig {
 		 Actions builder = new Actions(driver);
 		 Actions el=builder.moveToElement(Shp.SelectRegion());
 		 el.click().perform();
+		 java.util.Date date= new java.util.Date();
+		 
          File src= new File("./ServerExcel/Splunk Integ Server.xlsx");
 		 FileInputStream fis=new FileInputStream(src);
 		 XSSFWorkbook wb=new XSSFWorkbook(fis);
 		 XSSFSheet sheet=wb.getSheetAt(0);
 		 int RowCount=sheet.getLastRowNum();
-		 System.out.println("Total row is "+ RowCount);
+		 int RealCount=RowCount+1;
+		 System.out.println("Total Number of Servers are : "+ RealCount);
 		 
 		 for(int i=0;i<RowCount;i++) {
 			 String Server1 = sheet.getRow(i).getCell(0).getStringCellValue();
-			 System.out.println("Server from row " +  i  + " is " +  Server1);
+			 System.out.println("Started Checking four components of  "  +  Server1 );
 			 
 		 
 		 Shp.Sis(Server1);
@@ -62,8 +65,8 @@ public class DriverTest extends BrowserConfig {
 			 
 			 
 				
-				 java.util.Date date= new java.util.Date();
-			      System.out.println(new Timestamp(date.getTime()) + " Before");
+				 
+			      System.out.println(new Timestamp(date.getTime()) + " Before Check");
 			      Thread.sleep(5000);
 			      CommonFunctions scrShot = new CommonFunctions();
 					
@@ -71,7 +74,7 @@ public class DriverTest extends BrowserConfig {
 				scrShot.expWait(driver, new StatusCheck().Status(driver));
 				
 				scrShot.ScreenShot(driver, i);
-				System.out.println(new Timestamp(date.getTime()) + " After");
+				
 			 
 				 String result1=Sc.FirstRow(driver).getText();
 				 
@@ -99,9 +102,9 @@ public class DriverTest extends BrowserConfig {
 				               }
 				 
 				 if(result3.equalsIgnoreCase("Running")) {
-					   System.out.println("Thrid row of "+ Server1 + ": Running");
+					   System.out.println("Thrid row of "+ Server1 + " : Running");
 				            }else {
-				 	            System.out.println("third row of " + Server1 + ":Not Running");
+				 	            System.out.println("third row of " +  Server1 + ":Not Running");
 				                                }
 
 					if(result4.equalsIgnoreCase("Running")) {
@@ -110,8 +113,23 @@ public class DriverTest extends BrowserConfig {
 						               System.out.println("Fourht row of "+ Server1 +":Not Running");
 					                   }
 			 
+					System.out.println(new Timestamp(date.getTime()) + " After Check");
 		 
-		 
+					if((result1.equalsIgnoreCase("Not Running"))||(result2.equalsIgnoreCase("Not Running"))||(result3.equalsIgnoreCase("Not Running"))||(result4.equalsIgnoreCase("Not Running")))
+						  {							
+						   
+						   String Valid="Not Running";     
+						
+						   System.out.println("One or more components of " + Server1 + "is " + Valid);
+						  }
+					 else    
+					      {
+						
+						   System.out.println("All four components of " + Server1 + " are Running");
+					        
+					      }
+		            
+					
 					
 
 				
@@ -130,7 +148,9 @@ public class DriverTest extends BrowserConfig {
 		 ExtentReportClass showTime = new ExtentReportClass();
 		 showTime.report();
 		 
-		 new sendMail().mailTrigger("murari.krishna1@ikea.com");
+		
+		 
+	     new sendMail().mailTrigger("murari.krishna1@ikea.com");
 		 
 		 driver.quit();
 		 
