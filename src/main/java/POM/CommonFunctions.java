@@ -21,10 +21,16 @@ public class CommonFunctions {
 		FileUtils.copyFile(source1, new File("C:\\Users\\mukri2\\eclipse-workspace\\splunk_automation\\Screenshots\\Check"+ i +".png"));
 	}
 	
+	public void failedScreenshot(WebDriver driver, int i) throws IOException
+	{
+		File source1= ((TakesScreenshot)driver).getScreenshotAs(OutputType.FILE);
+		FileUtils.copyFile(source1, new File("C:\\Users\\mukri2\\eclipse-workspace\\splunk_automation\\NotRunningServerScreenshot\\Check"+ i +".png"));
+	}
+	
 	public void expWait(WebDriver driver, WebElement element)
 	{
 		
-		WebDriverWait wait = new WebDriverWait(driver, 35);
+		WebDriverWait wait = new WebDriverWait(driver, 60);
 		wait.until(ExpectedConditions.visibilityOf(element));
 	}
 }

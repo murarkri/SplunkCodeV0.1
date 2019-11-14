@@ -19,6 +19,8 @@ import javax.mail.internet.MimeBodyPart;
 import javax.mail.internet.MimeMessage;
 import javax.mail.internet.MimeMultipart;
 
+import org.openqa.selenium.WebDriver;
+
 public class sendMail {
 
 	static final String myAccount = "murari.krishna1@ikea.com";
@@ -31,7 +33,81 @@ public class sendMail {
 	 * 
 	 * }
 	 */
-
+	/*
+	 * public void failureMail(String recipient) throws MessagingException {
+	 * System.out.println("Sending Email"); Properties properties = new
+	 * Properties();
+	 * 
+	 * properties.put("mail.smtp.auth", "true");
+	 * properties.put("mail.smtp.starttls.enable", "false");
+	 * properties.put("mail.smtp.host", "smtp-gw.ikea.com");
+	 * properties.put("mail.smtp.port", "25");
+	 * 
+	 * 
+	 * 
+	 * Session session = Session.getInstance(properties, new Authenticator() {
+	 * 
+	 * @Override protected PasswordAuthentication getPasswordAuthentication() {
+	 * 
+	 * 
+	 * return new PasswordAuthentication(myAccount, password);
+	 * 
+	 * 
+	 * 
+	 * }
+	 * 
+	 * });
+	 * 
+	 * Message message = prepareMessage1(session, recipient);
+	 * 
+	 * Transport.send(message);
+	 * System.out.println("Failure email sent successfully with screenshot");
+	 * 
+	 * }
+	 * 
+	 * public static Message prepareMessage1(Session session, String recipient) {
+	 * try {
+	 * 
+	 * BodyPart messageBodyPart = new MimeBodyPart(); Message message = new
+	 * MimeMessage(session); message.setFrom(new InternetAddress(myAccount));
+	 * message.setRecipient(Message.RecipientType.TO, new
+	 * InternetAddress(recipient));
+	 * message.setSubject("Splunk integration server health check_iPPE1-EU(Failed)"
+	 * );
+	 * 
+	 * message.setText("OOPS! One or more server is not running");
+	 * //messageBodyPart.setContent(htmlMsg, "text/html");
+	 * 
+	 * 
+	 * Multipart multipart = new MimeMultipart();
+	 * 
+	 * multipart.addBodyPart(messageBodyPart);
+	 * 
+	 * messageBodyPart = new MimeBodyPart(); String fileName =
+	 * "C:\\Users\\mukri2\\eclipse-workspace\\splunk_automation\\ExtentReportFolder";
+	 * DataSource source = new FileDataSource(fileName);
+	 * 
+	 * messageBodyPart.setDataHandler(new DataHandler(source));
+	 * 
+	 * messageBodyPart.setFileName(fileName);
+	 * 
+	 * multipart.addBodyPart(messageBodyPart);
+	 * 
+	 * message.setContent(multipart);
+	 * 
+	 * 
+	 * return message; } catch (Exception e) { // TODO Auto-generated catch block
+	 * e.printStackTrace(); }
+	 * 
+	 * 
+	 * return null;
+	 * 
+	 * }
+	 * 
+	 */
+		
+		
+		
 	public void mailTrigger(String recipient) throws MessagingException
 	{
 		System.out.println("Sending Email");
@@ -60,7 +136,9 @@ public class sendMail {
 		
 		Message message = prepareMessage(session, recipient);
 		
+		
 		Transport.send(message);
+		
 		System.out.println("Email sent successfully");
 		
 	}
@@ -76,7 +154,15 @@ public class sendMail {
 			message.setRecipient(Message.RecipientType.TO, new InternetAddress(recipient));
 			message.setSubject("Splunk integration server health check_iPPE1-EU");
 			java.util.Date date= new java.util.Date();
-			
+		
+			/*
+			 * EmailAttachment emailAttachment=new EmailAttachment();
+			 * emailAttachment.setPath(
+			 * "C:\\Users\\mukri2\\eclipse-workspace\\splunk_automation\\ExtentReportFolder"
+			 * ); emailAttachment.setDisposition(EmailAttachment.ATTACHMENT);
+			 * emailAttachment.setDescription("Picture Attachment");
+			 * emailAttachment.setName("Picture");
+			 */
 			
 		    
 			String htmlMsg="<head>\r\n" + 
@@ -242,32 +328,32 @@ public class sendMail {
 					"</body>";
 			messageBodyPart.setContent(htmlMsg, "text/html");
 			
+			
 			Multipart multipart = new MimeMultipart();
 			
 			multipart.addBodyPart(messageBodyPart);
 			
-			messageBodyPart = new MimeBodyPart();
-			String fileName = "C:\\Users\\mukri2\\eclipse-workspace\\splunk_automation\\ExtentReportFolder\\SplunkStatusReport.html";
-			DataSource source = new FileDataSource(fileName);
 			
-			messageBodyPart.setDataHandler(new DataHandler(source));
 			
-			messageBodyPart.setFileName(fileName);
-			
-			multipart.addBodyPart(messageBodyPart);
+		 	multipart.addBodyPart(messageBodyPart);
 			
 			message.setContent(multipart);
 			
-			return message;
+			/*
+			 * MultiPartEmail email = new MultiPartEmail(); email.attach(emailAttachment);
+			 */
 			
-		} 
-		catch (Exception e) {
-			// TODO Auto-generated catch block
-			e.printStackTrace();
-		} 
+			return message;
+		}
+			catch (Exception e) {
+				// TODO Auto-generated catch block
+				e.printStackTrace();
+			} 
+			
+		
 		return null;
-	}
 	
+	}	
 	
 } 
 

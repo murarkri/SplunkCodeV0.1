@@ -2,12 +2,12 @@
 <testng-results skipped="0" failed="0" ignored="0" total="1" passed="1">
   <reporter-output>
   </reporter-output>
-  <suite name="Surefire suite" duration-ms="370822" started-at="2019-11-13T19:29:09 CET" finished-at="2019-11-13T19:35:19 CET">
+  <suite name="Surefire suite" duration-ms="349997" started-at="2019-11-14T09:27:36 CET" finished-at="2019-11-14T09:33:26 CET">
     <groups>
     </groups>
-    <test name="Surefire test" duration-ms="370822" started-at="2019-11-13T19:29:09 CET" finished-at="2019-11-13T19:35:19 CET">
+    <test name="Surefire test" duration-ms="349997" started-at="2019-11-14T09:27:36 CET" finished-at="2019-11-14T09:33:26 CET">
       <class name="splunk.splunk_automation.DriverTest">
-        <test-method status="PASS" signature="Code()[pri:0, instance:splunk.splunk_automation.DriverTest@6325a3ee]" name="Code" duration-ms="370770" started-at="2019-11-13T19:29:09 CET" finished-at="2019-11-13T19:35:19 CET">
+        <test-method status="PASS" signature="Code()[pri:0, instance:splunk.splunk_automation.DriverTest@65e2dbf3]" name="Code" duration-ms="349935" started-at="2019-11-14T09:27:36 CET" finished-at="2019-11-14T09:33:26 CET">
           <reporter-output>
           </reporter-output>
         </test-method> <!-- Code -->

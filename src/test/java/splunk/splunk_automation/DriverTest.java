@@ -19,11 +19,12 @@ import POM.ExtentReportClass;
 import POM.SplunkHomePage;
 import POM.SplunkLoginPage;
 import POM.StatusCheck;
+import POM.failedEmail;
 import POM.sendMail;
 
 public class DriverTest extends BrowserConfig {
 @Test
-	public  void Code() throws InterruptedException, IOException, MessagingException {
+	public  void Code() throws IOException, MessagingException, InterruptedException {
 		// TODO Auto-generated method stub
 	     driver=initializeDriver();
 		 driver.get("https://splunk.ikea.com/en-US/app/ikea/somchecksterlingserverstatus?form.field1=");
@@ -33,8 +34,12 @@ public class DriverTest extends BrowserConfig {
 		 Slp.UN().sendKeys("mukri2");
 		 Slp.Password().sendKeys("india12c");
 		 Slp.Login().click();
-		 Thread.sleep(7000);
+		 
+		 Thread.sleep(8000);
+		 
+		 CommonFunctions scrShot = new CommonFunctions();
 		 SplunkHomePage Shp=new SplunkHomePage(driver);
+		// scrShot.expWait(driver, Shp.DropDown());
 		 Shp.DropDown().click();
 		 //driver.findElement(By.xpath("//button[contains(@data-test,'toggle')]")).click();
 		 Actions builder = new Actions(driver);
@@ -50,7 +55,10 @@ public class DriverTest extends BrowserConfig {
 		 int RealCount=RowCount+1;
 		 System.out.println("Total Number of Servers are : "+ RealCount);
 		 
-		 for(int i=0;i<RowCount;i++) {
+		 int Flag = 0;
+		 
+		 for(int i=0;i<1;i++)
+		 {
 			 String Server1 = sheet.getRow(i).getCell(0).getStringCellValue();
 			 System.out.println("Started Checking four components of  "  +  Server1 );
 			 
@@ -66,9 +74,9 @@ public class DriverTest extends BrowserConfig {
 			 
 				
 				 
-			      System.out.println(new Timestamp(date.getTime()) + " Before Check");
+			      
 			      Thread.sleep(5000);
-			      CommonFunctions scrShot = new CommonFunctions();
+			      
 					
 			      
 				scrShot.expWait(driver, new StatusCheck().Status(driver));
@@ -90,30 +98,38 @@ public class DriverTest extends BrowserConfig {
 				
 				 if(result1.equalsIgnoreCase("Running")) {
 					 System.out.println("First row of "+ Server1 + " : Running");
-					   }else {
+					   }
+				 else {
 						System.out.println("First row of " + Server1 + ": Not Running");
-						
+						scrShot.ScreenShot(driver, i);
+						Flag = 1;
 						
 					  }
 				 if(result2.equalsIgnoreCase("Running")) {
 					  System.out.println("Second row of "+ Server1 + ": Running");
 				         }else {
 					      System.out.println("Second row of "+ Server1 + ":Not Running");
+					      scrShot.ScreenShot(driver, i);
+					      Flag =1;
 				               }
 				 
 				 if(result3.equalsIgnoreCase("Running")) {
 					   System.out.println("Thrid row of "+ Server1 + " : Running");
 				            }else {
 				 	            System.out.println("third row of " +  Server1 + ":Not Running");
+				 	           scrShot.ScreenShot(driver, i);
+				 	          Flag =1;
 				                                }
 
 					if(result4.equalsIgnoreCase("Running")) {
 						   System.out.println("Fourth row of "+ Server1 + ": Running");
 					            }else {
 						               System.out.println("Fourht row of "+ Server1 +":Not Running");
+						               scrShot.ScreenShot(driver, i);
+						               Flag =1;
 					                   }
 			 
-					System.out.println(new Timestamp(date.getTime()) + " After Check");
+					
 		 
 					if((result1.equalsIgnoreCase("Not Running"))||(result2.equalsIgnoreCase("Not Running"))||(result3.equalsIgnoreCase("Not Running"))||(result4.equalsIgnoreCase("Not Running")))
 						  {							
@@ -121,11 +137,13 @@ public class DriverTest extends BrowserConfig {
 						   String Valid="Not Running";     
 						
 						   System.out.println("One or more components of " + Server1 + "is " + Valid);
+						  // new sendMail().failureMail("murari.krishna1@ikea.com");
 						  }
 					 else    
 					      {
 						
 						   System.out.println("All four components of " + Server1 + " are Running");
+						   
 					        
 					      }
 		            
@@ -148,9 +166,17 @@ public class DriverTest extends BrowserConfig {
 		 ExtentReportClass showTime = new ExtentReportClass();
 		 showTime.report();
 		 
-		
+		 if(Flag == 1)
+		 {
+			 new sendMail().mailTrigger("murari.krishna1@ikea.com");
+		 }
 		 
-	     new sendMail().mailTrigger("murari.krishna1@ikea.com");
+		 else
+		 {
+			 new failedEmail().mailTrigger("murari.krishna1@ikea.com");
+		 }
+		 
+	     
 		 
 		 driver.quit();
 		 

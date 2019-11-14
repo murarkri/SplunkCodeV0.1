@@ -16,20 +16,21 @@ public class ExcelWrite {
 	public static XSSFCell cell;
 	public static XSSFRow row;
 
-public static void main(String[]args) throws IOException {
+public static void main(String[]args) throws IOException, InterruptedException {
 		    
 	
-	File src=new File("C:\\Users\\mukri2\\Downloads\\Selenium\\ServerStatus.xlsx");
+	String fileName = "C:\\Users\\mukri2\\test.xlsx";
+	File src=new File(fileName);
 		    FileInputStream fis =new FileInputStream(src);
 		    XSSFWorkbook wob= new XSSFWorkbook(fis);
-		    XSSFSheet sheet=wob.getSheetAt(0);
+		    XSSFSheet sheet=wob.createSheet("Data");
 		    String[][] data = new String[3][2];
 		    data[0][0] = "Name";
 			data[0][1] = "City";
-			data[1][0] = "Shekhar";
-			data[1][1] = "Bangalore";
-			data[2][0] = "Manan";
-			data[2][1] = "Delhi";
+		/*
+		 * data[1][0] = "Shekhar"; data[1][1] = "Bangalore"; data[2][0] = "Manan";
+		 * data[2][1] = "Delhi";
+		 */
 			//Row count array
 			int dataRows = data.length;
 			//Column count
@@ -46,6 +47,7 @@ public static void main(String[]args) throws IOException {
 					cell.setCellValue(fillData); 
 		    FileOutputStream fos= new FileOutputStream(src);
 		    wob.write(fos);
+		    Thread.sleep(10000);
 		    wob.close();
 		    
 
